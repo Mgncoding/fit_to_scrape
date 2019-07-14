@@ -12,7 +12,7 @@
             <button class="btn btn-primary btn-sm" id="scrapeBtn">SCRAPE</button>
         </div>
         <div class="col-md-4">
-            <a href="https://www.nytimes.com" class="upper-link">NYTIMES.COM</a>
+            <a href="https://www.nytimes.com" target="_blank" class="upper-link">NYTIMES.COM</a>
         </div>
     </div>
 
@@ -55,7 +55,7 @@
     $(document).ready(function () {
         $("#scrapeBtn").on("click", function (event) {
             event.preventDefault();
-            $.get("/newscrape", function (data) {
+            $.get("/scrape", function (data) {
                 location.reload();
             });
         });

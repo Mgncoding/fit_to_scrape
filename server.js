@@ -1,15 +1,19 @@
 // Dependencies
 var express = require("express");
 var mongoose = require("mongoose");
+
 // Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
 var cheerio = require("cheerio");
+var app = express()
 
 // Handlebars 
 var exphbs = require("express-handlebars")
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
-app.set('index', __dirname + '/views');
+app.get("/", function(req, res) {
+  res.render("index")
+})
 // require all models
 var db = require("./models")
 
@@ -17,7 +21,6 @@ var db = require("./models")
 var PORT = process.env.PORT || 3000;
 
 // Initializing Express
-var app = express()
 
 // Config Middleware
 // Using morgan logger for Logging request
@@ -131,6 +134,6 @@ app.put("/newnote/:id", function(req, res) {
  }) 
 
 app.listen(3000, function() {
-    console.log("App running on port 3000!");
+    console.log("Server listening on: http://localhost:" + PORT);
   });
   
