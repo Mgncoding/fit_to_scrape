@@ -1,11 +1,15 @@
 // Dependencies
 var express = require("express");
 // var mongoose = require("mongoose");
-
 // Require axios and cheerio. This makes the scraping possible
 var axios = require("axios");
 var cheerio = require("cheerio");
 
+// Handlebars 
+var exphbs = require("express-handlebars")
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.set('index', __dirname + '/views');
 // require all models
 // var db = require("./models")
 
@@ -26,7 +30,9 @@ app.use(express.json())
 // app.use(express.static("views"))
 
 // Connect to the Mongo DB
-// mongoose.connect("mongodb://localhost/fitScrape", { useNewUrlParser: true });
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fitScrape"
+
+// mongoose.connect(MONGODB_URI)
 
 // Route
 
